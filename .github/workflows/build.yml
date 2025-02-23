@@ -1,0 +1,17 @@
+name: Access Other Repoon:
+  push:
+    branches:
+      - mainjobs:
+  access-other-repo:
+    runs-on: ubuntu-lateststeps:
+      - name: Checkout current repository
+        uses: actions/checkout@v2- name: Set up Git
+        run: git config --global user.name "977812671" && git config --global user.email "977812671@github.com"- name: Use Personal Access Token to access another private repo
+        env:
+          MY_ACCESS_TOKEN: ${{ secrets.MY_ACCESS_TOKEN }}
+        run: |
+          git clone https://github.com/977812671/test.git
+          cd other-private-repo
+          # 执行你需要的操作
+          echo "Successfully accessed the other private repo."
+
